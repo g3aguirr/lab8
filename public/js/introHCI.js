@@ -3,20 +3,31 @@
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
   initializePage();
-})
+  
+
 
 /*
  * Function that is called when the document is ready.
  */
 function initializePage() {
 	console.log("Page ready");
- 	initCamera();
+ 	//initCamera();
  	initGestures();
  	initRSVPForm();
 }
 
 // init jQuery gestures  
 function initGestures() {
+	$(function(){
+		$(".judge-img").bind("taphold", tapholdHandler);
+
+		function tapholdHandler(event){
+			var targetIDPrefix = event.target.id;
+			console.log("got prefix: " + targetIDPrefix);
+			$("#" + targetIDPrefix + "-bio").show();
+		}
+	});
+
 	// add gestures listener here
 }
 
